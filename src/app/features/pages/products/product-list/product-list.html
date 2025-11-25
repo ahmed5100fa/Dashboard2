@@ -1,0 +1,68 @@
+<main class="container">
+
+  <h2 class="page-title">Products</h2>
+
+  <!-- Search & Filter -->
+  <section class="search-filter">
+    <input type="text" placeholder="Search products..." class="w-50" [ngModel]='searchQuery()' (ngModelChange)="onSearchChange($event)">
+    <select [ngModel]="selectedCategory()" (ngModelChange)="onCategoryChange($event)">
+      <option value="all">All Categories</option>
+      @for (category of productCategories(); track $index) {
+        <option [value]="category">{{ category }}</option>
+      }
+    </select>
+  </section>
+  <!-- loader -->
+  <div *ngIf="loading()" class="d-flex justify-content-center align-items-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+
+<div *ngIf="!loading()">
+  <!-- Products Grid -->
+  <section class="product-grid container">
+    <div class="row">
+      @for (product of paginatedProducts(); track $index) {
+        <article class="p-2 col-lg-3 col-md-4 col-sm-6">
+          <div class="product-card ">
+            <img [src]="product.image" alt="Laptop Pro 15">
+            <div class="card-body">
+              <h5 class="my-2">{{product.name}}</h5>
+              <p class="my-2"><span class="fw-bolder">Category:</span> {{product.category}}</p>
+              <p class="my-2">${{product.price}}</p>
+              <div class="d-flex align-items-center justify-content-center">
+              <button
+                class="btn-orange py-2 px-5 rounded-3 text-white fw-medium"
+                [routerLink]="['/products', product.id]">
+                Show Details
+              </button>
+        </div>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  <nav class="pagination-wrapper" *ngIf="totalPages() > 1">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage() === 1">
+        <a class="page-link" href="#" (click)="goToPage(currentPage() - 1); $event.preventDefault()">Previous</a>
+      </li>
+
+      @for (page of pageNumbers(); track $index) {
+        <li class="page-item" [class.active]="currentPage() === page">
+          <a class="page-link" href="#" (click)="goToPage(page); $event.preventDefault()">{{ page }}</a>
+        </li>
+      }
+
+      <li class="page-item" [class.disabled]="currentPage() === totalPages()">
+        <a class="page-link" href="#" (click)="goToPage(currentPage() + 1); $event.preventDefault()">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+</main>

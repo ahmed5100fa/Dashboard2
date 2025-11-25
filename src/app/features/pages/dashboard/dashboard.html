@@ -1,0 +1,49 @@
+
+  <!-- loader -->
+  <div *ngIf="loading()" class="d-flex justify-content-center align-items-center">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="!loading()">
+        <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <!-- total price -->
+            <div class="col-sm-6 mb-3">
+              <div class="rounded-4 p-3 child1 text-white">
+                <div class="circle mb-3 bg-white text-black rounded-circle p-3 d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <h5 class="d-flex justify-content-between"><span class="mb-0 text-white">Total Products Count</span><span>{{totalPrice()}}</span></h5>
+              </div>
+            </div>
+            <!-- product in the stock -->
+            <div class="col-sm-6 mb-3">
+              <div class="rounded-4 p-3 bg-dark text-white">
+                <div class="circle mb-3 bg-white text-black rounded-circle p-3 d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h5 class="d-flex justify-content-between"><span class="mb-0 text-white">products in the stock</span><span>{{stockProducts().length}}</span></h5>
+              </div>
+            </div>
+            <!-- average price -->
+            <div class="col-sm-6 mb-3">
+              <div class="rounded-4 p-3 bg-dark text-white">
+                <div class="circle mb-3 bg-white text-black rounded-circle p-3 d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-money-bill-wave"></i>
+                </div>
+                <h5 class="d-flex justify-content-between"><span class="mb-0 text-white">Average Price</span><span>{{averagePrice()}}</span></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- import table -->
+      <div class="row">
+        <app-table></app-table>
+      </div>
+
+</div>

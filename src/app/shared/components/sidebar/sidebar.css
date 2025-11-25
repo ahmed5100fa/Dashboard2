@@ -1,0 +1,11 @@
+.nav-link:hover {
+    background-color: #f8f9fa;
+}
+.nav-link.bg-white {
+    background-color: #fb8c00 !important;
+    color: #fff !important;
+}
+.bg-orange {
+  background-color: orange !important;
+  color: #f8f9fa;
+}

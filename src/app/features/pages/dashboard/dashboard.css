@@ -1,0 +1,17 @@
+.child1{
+    background-color: #fb8c00;
+    color: #fff;
+}
+.child{
+    background-color: #2d2d2d;
+    color: #fff;
+}
+
+.bg-danger {
+  min-height: 100%;
+}
+
+.circle{
+  width: 55px;
+  height: 55px;
+}

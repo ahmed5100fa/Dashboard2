@@ -1,0 +1,21 @@
+.light{
+    color: #ccc;
+}
+
+.btn-outline-warning{
+    color: #fb8c00 !important;
+    border-color: #fb8c00 !important;
+}
+
+.btn-outline-warning:hover{
+    color: #fff !important;
+    background-color: #fb8c00 !important;
+}
+
+.logo{
+    width: 10%;
+}
+
+.side{
+    min-height: 85vh;
+}
